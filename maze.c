@@ -3,14 +3,14 @@
 #include<stdlib.h>
 
 
-int n=3,item,d1,d2,a[25][25];
+int n,item,d1,d2,a[25][25];
 void movement(int x,int y,int item);
 void movement2(int d2,int x);
 void movement3(int d2,int x,int item,int y);
 
 void movement(int x,int y,int item)
 {
-  item=a[x][y];
+  
   int d1,d2;
   d1=n-x;
   d2=n-y;
@@ -28,7 +28,11 @@ void movement(int x,int y,int item)
           }
   case 1://if(d1=n-2)
           {
-             movement3(d2,x,a[x][y],y);
+             movement3(d2,x,item,y);
+          }
+  default:
+          {
+             movement3(d2,x,item,y);
           }
   }
 }
@@ -75,7 +79,7 @@ void movement2(int d2,int x)
 
 void movement3(int d2,int x,int item,int y)
 {
-   a[x][y]=item;
+   //a[x][y]=item;
    if( a[x-1][y]!=0)
    {
       printf("move towards north\n");
@@ -106,23 +110,23 @@ void movement3(int d2,int x,int item,int y)
 
 void main()
 {
-  int i,j,n=3,x,y;
+  int i,j,x,y,element;
   
-  //printf("Enter the value of n\n");
-  //scanf("%d",&n);
+  printf("Enter the value of n\n");
+  scanf("%d",&n);
   printf("Enter the elements\n");
-  for(i=1;i<=3;i++)
+  for(i=1;i<=n;i++)
   {
-   for(j=1;j<=3;j++)
+   for(j=1;j<=n;j++)
     {
      scanf("%d",&a[i][j]);
     }
   }
 
   printf("The maze is\n");
-  for(i=1;i<=3;i++)
+  for(i=1;i<=n;i++)
   {
-    for(j=1;j<=3;j++)
+    for(j=1;j<=n;j++)
     {
      printf("%d\t",a[i][j]);
     }
@@ -132,7 +136,8 @@ void main()
 
   printf("Enter the position in which you are present\n");
   scanf("%d %d",&x,&y);
-  printf("Your position is %d\n",a[x][y]);
+  printf("Enter the element");
+  scanf("%d",&element);
   
 
  // printf("Number of bomb in maze\n");
@@ -144,5 +149,5 @@ void main()
   //printf("The element in which bomb is present is %d\n",a[x][y]);
     //}
   
-movement(x,y,a[x][y]);
+movement(x,y,element);
 }
