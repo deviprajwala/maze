@@ -1,0 +1,10 @@
+Enter the elements
+The maze is
+1	2	3	
+0	5	6	
+0	8	9	
+The position with 0 is explosive
+Enter the position in which you are present
+Your position is 5
+move towards north
+move towards north
